@@ -15,12 +15,13 @@
 # And a shout out to "Code with Hugo" for the syntax on manipulating git checkin dates.
 # https://codewithhugo.com/change-the-date-of-a-git-commit/
 
+import os
 from datetime import datetime, timedelta
 from subprocess import call
 
 yesterday = datetime.today() - timedelta(days=1)
 
-os.environ['GIT_COMMITTER_DATE'] = yesterday
-os.environ['GIT_COMMITTER_DATE'] = yesterday
+os.environ['GIT_COMMITTER_DATE'] = str(yesterday)
+os.environ['GIT_AUTHOR_DATE'] = str(yesterday)
 
 call(["git", "commit", "--amend", "--no-edit", "--date", str(yesterday)])
