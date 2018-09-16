@@ -19,4 +19,4 @@ from subprocess import call
 
 yesterday = datetime.today() - timedelta(days=1)
 
-call(["git", "commit", "--amend", "--no-edit", "--date", yesterday])
+call(["git", "commit", "--amend", "--no-edit", "--date", str(yesterday)])
