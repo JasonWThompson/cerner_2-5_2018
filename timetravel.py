@@ -11,6 +11,7 @@
 # I don't know Python, so I leveraged quite a bit of help from the following: 
 # https://stackoverflow.com/questions/15344710/get-yesterdays-date-in-python-dst-safe
 # https://stackoverflow.com/questions/89228/calling-an-external-command-in-python
+# https://stackoverflow.com/questions/5971312/how-to-set-environment-variables-in-python
 # And a shout out to "Code with Hugo" for the syntax on manipulating git checkin dates.
 # https://codewithhugo.com/change-the-date-of-a-git-commit/
 
@@ -18,5 +19,8 @@ from datetime import datetime, timedelta
 from subprocess import call
 
 yesterday = datetime.today() - timedelta(days=1)
+
+os.environ['GIT_COMMITTER_DATE'] = yesterday
+os.environ['GIT_COMMITTER_DATE'] = yesterday
 
 call(["git", "commit", "--amend", "--no-edit", "--date", str(yesterday)])
